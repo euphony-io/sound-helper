@@ -111,7 +111,7 @@ public class TransmitActivity extends AppCompatActivity implements SensorEventLi
         mSensorManager.unregisterListener(this);
 
         stopBtn.setVisibility(View.VISIBLE);
-        infoTV.setText("데이터 전송중");
+        infoTV.setText("Transmitting Data");
     }
 
     void stopTransmit(){ // stop transmission, start detection
@@ -121,6 +121,6 @@ public class TransmitActivity extends AppCompatActivity implements SensorEventLi
                 mAccelerometer,SensorManager.SENSOR_DELAY_NORMAL);
 
         stopBtn.setVisibility(View.GONE);
-        infoTV.setText("핸드폰을 흔들어서 데이터 전송 시작");
+        infoTV.setText("Shake device to transmit data");
     }
 }

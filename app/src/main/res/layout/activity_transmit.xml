@@ -35,6 +35,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginBottom="20dp"
-        android:text="중지"/>
+        android:text="STOP"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
