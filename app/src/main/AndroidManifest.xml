@@ -18,6 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ListenerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".InformActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
