@@ -34,7 +34,7 @@ public class ListenerActivity extends AppCompatActivity {
     private TextView listenView;
     private Button listenBtn;
 
-    EuRxManager mRxManager = new EuRxManager(true);
+    EuRxManager mRxManager = new EuRxManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,41 +46,8 @@ public class ListenerActivity extends AppCompatActivity {
         listenBtn = findViewById(R.id.button);
 
         mRxManager.setAcousticSensor(new AcousticSensor() {
-            public String byteArrayToHexString(byte[] bytes) {
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.length; i++) {
-                    builder.append(String.format(i + ":%08B ", bytes[i]));
-                }
-                return builder.toString();
-            }
-
-            public byte[] hexStringToByteArray(String hex) {
-                int l = hex.length();
-                byte[] data = new byte[l / 2];
-                for (int i = 0; i < l; i += 2) {
-                    data[i / 2] = (byte) ((Character.digit(hex.charAt(i), 16) << 4)
-                            + Character.digit(hex.charAt(i + 1), 16));
-                }
-                return data;
-            }
-
             @Override
             public void notify(String letters) {
-//                if (letters.indexOf("20") == 0) {
-//                    letters = letters.substring(2);
-//                }
-//                // "AC00" - "D7AF"
-//                int ko_min = 0xAC00, ko_max = 0xD7AF;
-//
-//                for (int i = 0; i < letters.length() - 4; i += 4) {
-//                    int tmp = Integer.parseInt(letters.substring(i, i + 4), 16);
-//                    if (ko_min <= tmp && tmp <= ko_max ) {
-//                    }
-//                    else {
-//                        i -= 6;
-//                    }
-//                }
-                Log.d("ListenerActivity", letters);
                 listenView.setText(letters);
                 listenBtn.setText("Listen");
                 mode = false;
