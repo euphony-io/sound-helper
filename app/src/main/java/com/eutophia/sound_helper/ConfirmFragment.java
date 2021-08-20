@@ -58,7 +58,7 @@ public class ConfirmFragment extends Fragment {
                 alert.setPositiveButton("confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(getActivity().getApplicationContext(), TransmitActivity.class);
+                        Intent intent = new Intent(getParentFragment().getActivity(), TransmitActivity.class);
                         startActivity(intent);
                     }
                 });
