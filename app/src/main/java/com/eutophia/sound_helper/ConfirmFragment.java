@@ -53,12 +53,17 @@ public class ConfirmFragment extends Fragment {
 
                 viewModel.getCurrentInfo().observe(getViewLifecycleOwner(), p -> {
                     person = p; });
+
+                if(person == null)
+                    return;
+
                 entireInfo += person.getName() + person.getTel() + person.getBirthOfDate() + person.getDiseaseName();
                 alert.setTitle("Do you want to submit it?").setMessage("\n" + entireInfo);
                 alert.setPositiveButton("confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(getParentFragment().getActivity(), TransmitActivity.class);
+                        intent.putExtra("sendMsg",entireInfo);
                         startActivity(intent);
                     }
                 });
