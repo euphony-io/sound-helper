@@ -11,4 +11,8 @@
     <string name="listen_btn_record">Listen</string>
     <string name="listen_btn_stop">Stop</string>
     <string name="status_text">Hello, Euphony</string>
+    <string name="askDisease">Please enter the name of your chronic disease yourself.</string>
+    <string name="isRightDisease">Is the name of your chosen chronic disease correct?</string>
+    <string name="checkName">Is this the right name?</string>
+    <string name="checkTel">Is this the right phone number?</string>
 </resources>
