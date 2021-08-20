@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button activity_listener= (Button)findViewById(R.id.listenerButton);
         activity_listener.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ListenerActivity.class);

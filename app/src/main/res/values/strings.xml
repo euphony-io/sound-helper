@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">sound-helper</string>
+    <string name="goto_listener_activity">listener activity</string>
+    <string name="listener_title">listener</string>
+    <string name="nothing">nothing</string>
+    <string name="recorder_permission_granted">Recorder Permission is granted</string>
+    <string name="recorder_permission_rejected">Recorder Permission is rejected</string>
+    <string name="recorder_access_required">Recorder access is required to use the euphony listener</string>
+    <string name="recorder_unavailable"><b>Recorder could not be used.</b>\nThis occurs when the recorder is not available (for example it is already in use) or if the system has denited access</string>
+    <string name="ok">OK</string>
+    <string name="listen_btn_record">Listen</string>
+    <string name="listen_btn_stop">Stop</string>
+    <string name="status_text">Hello, Euphony</string>
+    <string name="askDisease">Please enter the name of your chronic disease yourself.</string>
+    <string name="isRightDisease">Is the name of your chosen chronic disease correct?</string>
+    <string name="checkName">Is this the right name?</string>
+    <string name="checkTel">Is this the right phone number?</string>
 </resources>

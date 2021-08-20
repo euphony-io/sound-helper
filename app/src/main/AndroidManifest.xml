@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.eutophia.sound_helper">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Soundhelper">
+        <activity
+            android:name=".InfoActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".TransmitActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".ListenerActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
