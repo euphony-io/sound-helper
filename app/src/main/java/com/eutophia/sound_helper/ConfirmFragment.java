@@ -19,7 +19,7 @@ public class ConfirmFragment extends Fragment {
     private Button confirmBtn;
     private String entireInfo = "";
     Fragment mainFragment;
-    private Person person;
+    private Person person = new Person();
 
     @Override
     public void onAttach(Context context) {
@@ -54,7 +54,7 @@ public class ConfirmFragment extends Fragment {
                 viewModel.getCurrentInfo().observe(getViewLifecycleOwner(), p -> {
                     person = p; });
                 entireInfo += person.getName() + person.getTel() + person.getBirthOfDate() + person.getDiseaseName();
-                alert.setTitle("Do you want to submit it?").setMessage("\n" + entireInfo);
+                alert.setTitle(getString(R.string.submit)).setMessage("\n" + entireInfo);
                 alert.setPositiveButton("confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
