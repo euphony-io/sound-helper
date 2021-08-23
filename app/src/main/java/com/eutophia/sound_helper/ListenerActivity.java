@@ -118,6 +118,8 @@ public class ListenerActivity extends AppCompatActivity {
                             Snackbar.LENGTH_SHORT)
                             .show();
                 }
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }
