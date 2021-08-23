@@ -62,6 +62,10 @@ public class DateFragment extends Fragment {
                         birth.setText((month + 1) + "/" + dayOfMonth + "/" + year);
                         viewModel.getCurrentInfo().observe(getViewLifecycleOwner(), p ->
                         { person = p; });
+
+                        if(person == null)
+                            return;
+
                         person.setBirthOfDate(dateInfo);
                         viewModel.setCurrentInfo(person);
                     }
