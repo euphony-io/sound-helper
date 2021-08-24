@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/informButton"
+        android:id="@+id/enter_inform_button"
         android:layout_width="200dp"
         android:layout_height="80dp"
         android:background="@color/bloody_red"
@@ -18,7 +18,7 @@
         android:layout_margin="80dp" />
 
     <Button
-        android:id="@+id/listenerButton"
+        android:id="@+id/enter_listener_button"
         android:layout_width="200dp"
         android:layout_height="80dp"
         android:background="@color/bloody_red"
