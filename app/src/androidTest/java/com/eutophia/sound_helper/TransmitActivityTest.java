@@ -35,22 +35,17 @@ public class TransmitActivityTest {
     }
 
     @Test
-    public void testOnSensorChanged() {
-
+    public void testTransmitMsg() {
+        onView(withId(R.id.transmit_infoTV))
+                .check(matches(isDisplayed()));
     }
 
     @Test
-    public void testOnAccuracyChanged() {
+    public void testStopTransmit() {
+        onView(withId(R.id.transmit_infoTV))
+                .check(matches(isDisplayed()));
 
-    }
-
-    @Test
-    public void transmitMsg() {
-
-    }
-
-    @Test
-    public void stopTransmit() {
-
+        onView(withId(R.id.transmit_button))
+                .check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
     }
 }
