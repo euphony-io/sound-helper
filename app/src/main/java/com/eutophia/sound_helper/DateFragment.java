@@ -24,26 +24,26 @@ public class DateFragment extends Fragment {
     DatePickerDialog.OnDateSetListener date;
     Calendar calendar = Calendar.getInstance();
     private Button dateBtn;
-    Fragment mainFragment;
+    Fragment pageFragment;
     private Person person;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mainFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_main);
+        pageFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.page_fragment);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mainFragment = null;
+        pageFragment = null;
     }
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_date,container,false);
-        dateBtn = (Button)rootView.findViewById(R.id.editBirth);
-        birth = (TextView) rootView.findViewById(R.id.dateOfBirth);
+        dateBtn = (Button)rootView.findViewById(R.id.birth_editText);
+        birth = (TextView) rootView.findViewById(R.id.dateOfBirth_textView);
 
         return rootView;
     }

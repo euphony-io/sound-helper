@@ -29,7 +29,7 @@ public class InfoFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        pageFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_main);
+        pageFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.page_fragment);
     }
 
     @Override
@@ -80,10 +80,10 @@ public class InfoFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_info,container,false);
         viewModel = new ViewModelProvider(requireActivity()).get(InfoViewModel.class);
 
-        name = (EditText)rootView.findViewById(R.id.editName);
-        tel = (EditText)rootView.findViewById(R.id.editTel);
-        btn1 = (Button) rootView.findViewById(R.id.confirmName);
-        btn2 = (Button) rootView.findViewById(R.id.confirmTel);
+        name = (EditText)rootView.findViewById(R.id.name_editText);
+        tel = (EditText)rootView.findViewById(R.id.tel_editText);
+        btn1 = (Button) rootView.findViewById(R.id.confirm_name_button);
+        btn2 = (Button) rootView.findViewById(R.id.confirm_tel_button);
 
         return rootView;
     }

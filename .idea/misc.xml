@@ -4,6 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/82102/StudioProjects/sound-helper/app/src/main/res/layout/activity_info.xml" value="0.1296875" />
+        <entry key="..\:/Users/82102/StudioProjects/sound-helper/app/src/main/res/layout/activity_listener.xml" value="0.15217391304347827" />
+        <entry key="..\:/Users/82102/StudioProjects/sound-helper/app/src/main/res/layout/activity_main.xml" value="0.15217391304347827" />
+        <entry key="..\:/Users/82102/StudioProjects/sound-helper/app/src/main/res/layout/activity_transmit.xml" value="0.15217391304347827" />
+        <entry key="..\:/Users/82102/StudioProjects/sound-helper/app/src/main/res/layout/fragment_confirm.xml" value="0.11510416666666666" />
+        <entry key="..\:/Users/82102/StudioProjects/sound-helper/app/src/main/res/layout/fragment_date.xml" value="0.15217391304347827" />
+        <entry key="..\:/Users/82102/StudioProjects/sound-helper/app/src/main/res/layout/fragment_disease.xml" value="0.15217391304347827" />
+        <entry key="..\:/Users/82102/StudioProjects/sound-helper/app/src/main/res/layout/fragment_info.xml" value="0.15217391304347827" />
+        <entry key="..\:/Users/82102/StudioProjects/sound-helper/app/src/main/res/layout/fragment_main.xml" value="0.15217391304347827" />
+        <entry key="..\:/Users/82102/StudioProjects/sound-helper/app/src/main/res/layout/fragment_page.xml" value="0.1296875" />
         <entry key="..\:/Users/judem/Git/Euphony-io/sound-helper-eu/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/judem/Git/Euphony-io/sound-helper-eu/app/src/main/res/layout/activity_transmit.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/kuro1/Source/Repos/Remote/OpenSource/sound-helper/app/src/main/res/layout/activity_listener.xml" value="0.29030797101449274" />

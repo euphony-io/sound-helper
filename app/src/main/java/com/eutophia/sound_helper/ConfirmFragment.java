@@ -18,19 +18,19 @@ import android.widget.Button;
 public class ConfirmFragment extends Fragment {
     private Button confirmBtn;
     private String entireInfo = "";
-    Fragment mainFragment;
-    private Person person;
+    Fragment pageFragment;
+    private Person person = new Person();
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mainFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_main);
+        pageFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.page_fragment);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mainFragment = null;
+        pageFragment = null;
     }
 
 
@@ -38,7 +38,7 @@ public class ConfirmFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_confirm,container,false);
-        confirmBtn = (Button)rootView.findViewById(R.id.confirm);
+        confirmBtn = (Button)rootView.findViewById(R.id.confirm_button);
 
         return rootView;
     }
@@ -58,7 +58,7 @@ public class ConfirmFragment extends Fragment {
                     return;
 
                 entireInfo += person.getName() + person.getTel() + person.getBirthOfDate() + person.getDiseaseName();
-                alert.setTitle("Do you want to submit it?").setMessage("\n" + entireInfo);
+                alert.setTitle(getString(R.string.submit)).setMessage("\n" + entireInfo);
                 alert.setPositiveButton("confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

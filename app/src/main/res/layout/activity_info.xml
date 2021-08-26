@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         tools:context="com.example.codestudio.myapplication.MainActivity">
         <TextView
+            android:id="@+id/enter_info_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="21sp"
@@ -21,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:id="@+id/fragment_main"
+            android:id="@+id/page_fragment"
             android:name="com.eutophia.sound_helper.PageFragment"
             />
     </RelativeLayout>
