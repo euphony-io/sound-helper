@@ -34,6 +34,43 @@ public class ConfirmFragmentTest extends TestCase {
 
     @Test
     public void testButtonClick(){
+        runFragment();
+
+        Espresso.onView(ViewMatchers.withId(R.id.confirm_button))
+                .perform(click());
+    }
+    @Test
+    public void testDialogDisplay() throws InterruptedException {
+        runFragment();
+
+        Espresso.onView(ViewMatchers.withId(R.id.confirm_button))
+                .perform(click());
+        Espresso.onView(ViewMatchers.withText(R.string.submit))
+                .check(matches(isDisplayed()));
+    }
+    @Test
+    public void testDialogPositiveButtonClick(){
+        runFragment();
+
+        Espresso.onView(ViewMatchers.withId(R.id.confirm_button))
+                .perform(click());
+        Espresso.onView(ViewMatchers.withText(R.string.submit))
+                .check(matches(isDisplayed()));
+        Espresso.onView(ViewMatchers.withText("confirm"))
+                .perform(click());
+    }
+    @Test
+    public void testDialogNegativeButtonClick(){
+        runFragment();
+
+        Espresso.onView(ViewMatchers.withId(R.id.confirm_button))
+                .perform(click());
+        Espresso.onView(ViewMatchers.withText(R.string.submit))
+                .check(matches(isDisplayed()));
+        Espresso.onView(ViewMatchers.withText("cancel"))
+                .perform(click());
+    }
+    public void runFragment(){
         activityRule.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -41,10 +78,7 @@ public class ConfirmFragmentTest extends TestCase {
 
             }
         });
-        Espresso.onView(ViewMatchers.withId(R.id.confirm))
-                .perform(click());
     }
-
     private ConfirmFragment startFragment() {
         InfoActivity activity = (InfoActivity) activityRule.getActivity();
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
