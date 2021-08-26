@@ -1,11 +1,11 @@
 package com.eutophia.sound_helper;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button activity_info= (Button)findViewById(R.id.informButton);
+        Button activity_info= (Button)findViewById(R.id.enter_inform_button);
         activity_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button activity_listener= (Button)findViewById(R.id.listenerButton);
+        Button activity_listener= (Button)findViewById(R.id.enter_listener_button);
         activity_listener.setOnClickListener(new View.OnClickListener() {
 
             @Override
