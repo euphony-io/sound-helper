@@ -41,7 +41,9 @@ public class TransmitActivity extends AppCompatActivity implements SensorEventLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transmit);
 
-        _sendMsg = "encoded msg from intent";
+        _sendMsg = getIntent().getStringExtra("sendMsg");
+        if(_sendMsg == null)
+            _sendMsg = "none";
 
         infoTV = findViewById(R.id.transmit_infoTV);
         msgTV = findViewById(R.id.transmit_msgTV);
