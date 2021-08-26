@@ -30,7 +30,7 @@ public class DateFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mainFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_main);
+        mainFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_page);
     }
 
     @Override
