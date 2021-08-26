@@ -73,7 +73,7 @@ public class DiseaseFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_disease,container,false);
         list = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, disease_list);
-        spinner = (Spinner) rootView.findViewById(R.id.sp);
+        spinner = (Spinner) rootView.findViewById(R.id.select_disease_spinner);
         list.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(list);
         spinner.setSelection(0, false);

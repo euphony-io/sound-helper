@@ -42,8 +42,8 @@ public class DateFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_date,container,false);
-        dateBtn = (Button)rootView.findViewById(R.id.editBirth);
-        birth = (TextView) rootView.findViewById(R.id.dateOfBirth);
+        dateBtn = (Button)rootView.findViewById(R.id.birth_editText);
+        birth = (TextView) rootView.findViewById(R.id.dateOfBirth_textView);
 
         return rootView;
     }

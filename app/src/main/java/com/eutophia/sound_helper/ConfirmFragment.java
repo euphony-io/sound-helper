@@ -38,7 +38,7 @@ public class ConfirmFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_confirm,container,false);
-        confirmBtn = (Button)rootView.findViewById(R.id.confirm);
+        confirmBtn = (Button)rootView.findViewById(R.id.confirm_button);
 
         return rootView;
     }

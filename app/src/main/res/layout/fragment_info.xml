@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/name_textView"
         android:layout_marginStart="15dp"
         android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
@@ -12,8 +12,8 @@
         android:text="Name" />
 
     <EditText
-        android:id="@+id/editName"
-        android:layout_below="@+id/name"
+        android:id="@+id/name_editText"
+        android:layout_below="@+id/name_textView"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_width="200dp"
@@ -23,8 +23,8 @@
         android:text="" />
 
     <TextView
-        android:id="@+id/tel"
-        android:layout_below="@+id/editName"
+        android:id="@+id/tel_textView"
+        android:layout_below="@+id/name_editText"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
@@ -32,8 +32,8 @@
         android:text="Emergency contact number" />
 
     <EditText
-        android:id="@+id/editTel"
-        android:layout_below="@+id/tel"
+        android:id="@+id/tel_editText"
+        android:layout_below="@+id/tel_textView"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_width="200dp"
@@ -42,9 +42,9 @@
         android:inputType="" />
 
     <Button
-        android:id="@+id/confirmName"
-        android:layout_toRightOf="@id/editName"
-        android:layout_below="@id/name"
+        android:id="@+id/confirm_name_button"
+        android:layout_toRightOf="@id/name_editText"
+        android:layout_below="@id/name_textView"
         android:layout_marginTop="15dp"
         android:layout_marginStart="15dp"
         android:layout_width="wrap_content"
@@ -52,9 +52,9 @@
         android:text="enter" />
 
     <Button
-        android:id="@+id/confirmTel"
-        android:layout_toRightOf="@id/editTel"
-        android:layout_below="@id/tel"
+        android:id="@+id/confirm_tel_button"
+        android:layout_toRightOf="@id/tel_editText"
+        android:layout_below="@id/tel_textView"
         android:layout_marginTop="15dp"
         android:layout_marginStart="15dp"
         android:layout_width="wrap_content"
