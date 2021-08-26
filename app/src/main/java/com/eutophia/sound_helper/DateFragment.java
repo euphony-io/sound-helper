@@ -24,19 +24,19 @@ public class DateFragment extends Fragment {
     DatePickerDialog.OnDateSetListener date;
     Calendar calendar = Calendar.getInstance();
     private Button dateBtn;
-    Fragment mainFragment;
+    Fragment pageFragment;
     private Person person;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mainFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_page);
+        pageFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.page_fragment);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mainFragment = null;
+        pageFragment = null;
     }
 
 

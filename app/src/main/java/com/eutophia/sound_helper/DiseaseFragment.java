@@ -20,7 +20,7 @@ import android.widget.Spinner;
 public class DiseaseFragment extends Fragment {
     final boolean IN = true;
     final boolean OTHER = false;
-    Fragment mainFragment;
+    Fragment pageFragment;
     private Spinner spinner;
     final CharSequence[] disease_list = {
             "Diabetes", "Asthma", "Dementia", "Visual impairment", "Hearing impairment", "None", "Other"
@@ -33,13 +33,13 @@ public class DiseaseFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mainFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_page);
+        pageFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.page_fragment);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mainFragment = null;
+        pageFragment = null;
     }
 
     public void showAlert(String title, String message, EditText text,

@@ -29,7 +29,7 @@ public class InfoFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        pageFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_page);
+        pageFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.page_fragment);
     }
 
     @Override

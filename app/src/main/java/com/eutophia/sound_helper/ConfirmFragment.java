@@ -18,19 +18,19 @@ import android.widget.Button;
 public class ConfirmFragment extends Fragment {
     private Button confirmBtn;
     private String entireInfo = "";
-    Fragment mainFragment;
+    Fragment pageFragment;
     private Person person = new Person();
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mainFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_page);
+        pageFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.page_fragment);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mainFragment = null;
+        pageFragment = null;
     }
 
 
