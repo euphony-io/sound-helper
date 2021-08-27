@@ -12,9 +12,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import euphony.lib.transmitter.EuTxManager;
 
 public class TransmitActivity extends AppCompatActivity implements SensorEventListener {
+    private String TAG = "Transmit";
+    Person person = new Person();
+
     private String _sendMsg = "HelloWorld!";
 
     //
@@ -52,6 +61,7 @@ public class TransmitActivity extends AppCompatActivity implements SensorEventLi
             @Override
             public void onClick(View view) {
                 stopTransmit();
+                finish();
             }
         });
 
@@ -61,6 +71,26 @@ public class TransmitActivity extends AppCompatActivity implements SensorEventLi
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         stopTransmit();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Person");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                stopTransmit();
+                person = dataSnapshot.getValue(Person.class);
+
+                _sendMsg = "Name : " + person.getName() +  "\nTel : " + person.getTel() +
+                        "\nBirth : " + person.getBirthOfDate() + "\nDisease : " + person.getDiseaseName();
+                msgTV.setText(_sendMsg);
+                transmitMsg(_sendMsg);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
     }
 
     @Override
@@ -91,8 +121,9 @@ public class TransmitActivity extends AppCompatActivity implements SensorEventLi
                     return;
                 mShakeTime = currentTime;
 
-                Log.e("Transmit","Shake Detected");
-                transmitMsg(_sendMsg); // call transmit function
+                ////
+                //// 이 부분이 흔들림이 감지되었을 때 호출되는 부분
+                //// 여기서 액티비티 시작
             }
         }
     }
@@ -119,6 +150,6 @@ public class TransmitActivity extends AppCompatActivity implements SensorEventLi
                 mAccelerometer,SensorManager.SENSOR_DELAY_NORMAL);
 
         stopBtn.setVisibility(View.GONE);
-        infoTV.setText("Shake device to transmit data");
+        infoTV.setText("Waiting for Data from DB");
     }
 }

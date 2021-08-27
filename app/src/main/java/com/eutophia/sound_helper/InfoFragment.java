@@ -149,7 +149,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener, Adap
             });
         }
         else{
-            entireInfo += "Name : " + person.getName() +  "\nTel : " + person.getTel() +
+            entireInfo = "Name : " + person.getName() +  "\nTel : " + person.getTel() +
                     "\nBirth : " + person.getBirthOfDate() + "\nDisease : " + person.getDiseaseName();
             alert.setTitle(getString(R.string.submit)).setMessage("\n" + entireInfo);
             alert.setPositiveButton("confirm", new DialogInterface.OnClickListener() {
@@ -163,6 +163,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener, Adap
                     DatabaseReference myRef = database.getReference("Person");
                     myRef.setValue(person);
 
+                    getActivity().finish();
                 }
             });
             alert.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
