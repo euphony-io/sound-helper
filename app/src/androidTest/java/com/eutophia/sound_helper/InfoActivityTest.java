@@ -29,7 +29,7 @@ public class InfoActivityTest extends TestCase {
 
     @Test
     public void testFragmentDisplay(){
-        Espresso.onView(ViewMatchers.withId(R.id.page_fragment))
+        Espresso.onView(ViewMatchers.withId(R.id.info_fragment))
                 .check(matches(isDisplayed()));
     }
 }
