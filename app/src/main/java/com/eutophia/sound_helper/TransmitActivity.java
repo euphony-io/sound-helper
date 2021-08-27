@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import euphony.lib.transmitter.EuTxManager;
 
 public class TransmitActivity extends AppCompatActivity implements SensorEventListener {
-    private String _sendMsg = "";
+    private String _sendMsg = "HelloWorld!";
 
     //
 
@@ -40,10 +40,6 @@ public class TransmitActivity extends AppCompatActivity implements SensorEventLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transmit);
-
-        _sendMsg = getIntent().getStringExtra("sendMsg");
-        if(_sendMsg == null)
-            _sendMsg = "none";
 
         infoTV = findViewById(R.id.transmit_infoTV);
         msgTV = findViewById(R.id.transmit_msgTV);
