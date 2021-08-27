@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "639743568399",
+    "project_id": "sound-helper-72775",
+    "storage_bucket": "sound-helper-72775.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639743568399:android:26eb912a71f4ca478b917a",
+        "android_client_info": {
+          "package_name": "com.eutophia.sound_helper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "639743568399-chr8omerfhsq7p723qp7snft7tktoujp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eutophia.sound_helper",
+            "certificate_hash": "6b98489b499fe5aba87ef993500545b4118c4574"
+          }
+        },
+        {
+          "client_id": "639743568399-0qht8th9btc33lugh61vg0of16t1odlr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD78JhpFvNnyP-r3Mjos4KiJTjCfbey7lo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "639743568399-0qht8th9btc33lugh61vg0of16t1odlr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
