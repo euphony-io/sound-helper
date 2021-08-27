@@ -16,13 +16,20 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.Is.is;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
+import androidx.test.uiautomator.UiDevice;
+import androidx.test.uiautomator.UiObject;
+import androidx.test.uiautomator.UiSelector;
+
+import junit.framework.AssertionFailedError;
 
 import org.hamcrest.Matcher;
 import org.junit.Before;
@@ -60,10 +67,39 @@ public class DiseaseFragmentTest {
     }
 
     @Test
-    public void selectBySpinnerText() throws Exception {
+    public void checkElementDisplayed() throws Exception {
+        onView(withId(R.id.sp))
+                .check(matches(isDisplayed()));
         onView(withId(R.id.select_disease))
-                .perform(click());
-        onData(allOf(is(instanceOf(String.class)), is("Diabetes")))
-                .perform(click());
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void selectBySpinnerText() throws Exception {
+        final int selectDiseaseId = R.id.sp;
+        String[] diseaseList = {
+                "Diabetes", "Asthma", "Dementia", "Visual impairment", "Hearing impairment", "None", "Other"
+        };
+        // Initialize UiDevice instance
+        UiDevice uiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+
+        for (int i = 0; i < diseaseList.length; i++) {
+            String disease = diseaseList[i];
+            onView(withId(selectDiseaseId))
+                    .perform(click());
+            onData(allOf(is(instanceOf(String.class)), is(disease)))
+                    .perform(click());
+
+            if (i > 0) {
+                UiObject button = uiDevice.findObject(new UiSelector().text("ENTER"));
+                if (button.exists() && button.isEnabled()) {
+                    button.click();
+//                    Log.d("aaaaaaaaaaaaaa", button.getText());
+                }
+            }
+
+            onView(withId(selectDiseaseId))
+                    .check(matches(withSpinnerText(containsString(disease))));
+        }
     }
 }
