@@ -15,4 +15,5 @@
     <string name="isRightDisease">Is the name of your chosen chronic disease correct?</string>
     <string name="checkName">Is this the right name?</string>
     <string name="checkTel">Is this the right phone number?</string>
+    <string name="submit">Do you want to submit it?</string>
 </resources>

@@ -9,20 +9,14 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Locale;
-
 import euphony.lib.receiver.AcousticSensor;
 import euphony.lib.receiver.EuRxManager;
-import euphony.lib.receiver.EuFreqObject;
 
 public class ListenerActivity extends AppCompatActivity {
 
@@ -43,7 +37,7 @@ public class ListenerActivity extends AppCompatActivity {
         mContext = this;
         mainLayout = findViewById(R.id.main_Layout);
         listenView = findViewById(R.id.listen_view);
-        listenBtn = findViewById(R.id.button);
+        listenBtn = findViewById(R.id.listen_button);
 
         mRxManager.setAcousticSensor(new AcousticSensor() {
             @Override
@@ -124,6 +118,8 @@ public class ListenerActivity extends AppCompatActivity {
                             Snackbar.LENGTH_SHORT)
                             .show();
                 }
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

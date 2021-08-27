@@ -1,8 +1,10 @@
 package com.eutophia.sound_helper;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,94 +15,156 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
-public class InfoFragment extends Fragment {
-    final String NAME = "NAME";
-    final String TEL = "TEL";
-    PageFragment pageFragment;
-    InfoViewModel viewModel;
-    private EditText name, tel;
-    private Button btn1, btn2;
-    String nameInfo = "", telInfo = "";
-    Person person = new Person();
+import java.util.Calendar;
+
+public class InfoFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+    InfoActivity infoActivity;
+
+    private TextView birth;
+    private EditText disease, name, tel;
+    private Button dateBtn, confirmBtn;
+    private Spinner spinner;
+
+    Calendar calendar = Calendar.getInstance();
+
+    private String nameInfo = "", telInfo = "", dateInfo = "", diseaseInfo = "", entireInfo = "";
+    private Person person = new Person();
+    final CharSequence[] disease_list = {
+            "Diabetes", "Asthma", "Dementia", "Visual impairment", "Hearing impairment", "None", "Other"
+    };
+    ArrayAdapter<CharSequence> list;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        pageFragment = (PageFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_main);
+        infoActivity = (InfoActivity)getActivity();
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        pageFragment = null;
-    }
-
-    public void showAlert(String title, String message, String type){
-        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-        alert.setTitle(title).setMessage(message);
-
-        alert.setPositiveButton("confirm", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if(type == "NAME"){
-                    nameInfo = "";
-                    nameInfo += "Name: " + name.getText().toString() + "\n";
-                    person.setName(nameInfo);
-                }
-                else{
-                    telInfo = "";
-                    telInfo += "Emergency contact number: " + tel.getText().toString() + "\n";
-                    person.setTel(telInfo);
-                    viewModel.setCurrentInfo(person);
-                }
-            }
-        });
-        alert.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if(type == "NAME"){
-                    nameInfo = "";
-                    name.setText("");
-                }
-                else{
-                    telInfo = "";
-                    tel.setText("");
-                }
-            }
-        });
-        alert.show();
+        infoActivity = null;
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_info,container,false);
-        viewModel = new ViewModelProvider(requireActivity()).get(InfoViewModel.class);
-
-        name = (EditText)rootView.findViewById(R.id.editName);
-        tel = (EditText)rootView.findViewById(R.id.editTel);
-        btn1 = (Button) rootView.findViewById(R.id.confirmName);
-        btn2 = (Button) rootView.findViewById(R.id.confirmTel);
+        setUI(rootView);
 
         return rootView;
     }
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        viewModel = new ViewModelProvider(requireActivity()).get(InfoViewModel.class);
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAlert(getString(R.string.checkName), "\n" + name.getText().toString(), NAME);
-            }
-        });
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAlert(getString(R.string.checkTel), "\n" + tel.getText().toString(), TEL);
-            }
-        });
+
+    private void setUI(View rootView){
+        dateBtn = (Button)rootView.findViewById(R.id.birth_button);
+        confirmBtn = (Button)rootView.findViewById(R.id.confirm_button);
+        name = (EditText)rootView.findViewById(R.id.name_editText);
+        tel = (EditText)rootView.findViewById(R.id.tel_editText);
+        birth = (TextView) rootView.findViewById(R.id.dateOfBirth_textView);
+        spinner = (Spinner) rootView.findViewById(R.id.select_disease_spinner);
+
+        list = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, disease_list);
+        list.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        dateBtn.setOnClickListener(this);
+        confirmBtn.setOnClickListener(this);
+
+        spinner.setAdapter(list);
+        spinner.setSelection(0, false);
+        spinner.setOnItemSelectedListener(this);
+    }
+    public void setInfo(String type){
+        if(type.equals("name") == true){
+            nameInfo = "";
+            nameInfo += "Name: " + name.getText().toString() + "\n";
+            person.setName(nameInfo);
+        }
+        else if(type.equals("tel") == true){
+            telInfo = "";
+            telInfo += "Emergency contact number: " + tel.getText().toString() + "\n";
+            person.setTel(telInfo);
+        }
+        else
+            return;
+    }
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.birth_button) {
+            DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                    dateInfo = "";
+                    dateInfo += "Date of Birth: " + (month + 1) + "/" + dayOfMonth + "/" + year + "\n";
+                    birth.setText((month + 1) + "/" + dayOfMonth + "/" + year);
+
+                    person.setBirthOfDate(dateInfo);
+                }
+            };
+            DatePickerDialog dialog = new DatePickerDialog(getActivity(), date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+            dialog.show();
+        }
+        else if(view.getId() == R.id.confirm_button){
+            setInfo("name");
+            setInfo("tel");
+
+            showAlert(confirmBtn);
+        }
+    }
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        diseaseInfo = "";
+        if (disease_list[position].toString().equals("Other")) {
+            disease = new EditText(getActivity());
+            disease.setHeight(200);
+            showAlert(spinner);
+        }
+        else
+            diseaseInfo += "chronic disease: " + disease_list[position].toString() + "\n";
+        person.setDiseaseName(diseaseInfo);
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent){
+    }
+
+    public void showAlert(View view){
+        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        if(view.getId() == R.id.select_disease_spinner) {
+            alert.setTitle(getString(R.string.askDisease));
+            alert.setView(disease);
+            alert.setPositiveButton("enter", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    diseaseInfo += "chronic disease: " + disease.getText().toString() + "\n";
+                    person.setDiseaseName(diseaseInfo);
+                }
+            });
+        }
+        else{
+            entireInfo += person.getName() + person.getTel() + person.getBirthOfDate() + person.getDiseaseName();
+            alert.setTitle(getString(R.string.submit)).setMessage("\n" + entireInfo);
+            alert.setPositiveButton("confirm", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Intent intent = new Intent(getActivity(), TransmitActivity.class);
+                    intent.putExtra("sendMsg",entireInfo);
+                    startActivity(intent);
+                }
+            });
+            alert.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    entireInfo = "";
+                }
+            });
+        }
+        alert.show();
     }
 }
