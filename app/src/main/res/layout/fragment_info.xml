@@ -43,11 +43,11 @@
 
     <TextView
         android:id="@+id/birth_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tel_editText"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Date of Birth" />
 
     <Button
@@ -73,9 +73,9 @@
 
     <TextView
         android:id="@+id/select_disease_textView"
-        android:layout_below="@id/dateOfBirth_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/dateOfBirth_textView"
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
         android:text="Select the chronic disease" />

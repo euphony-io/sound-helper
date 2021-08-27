@@ -23,6 +23,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Calendar;
 
 public class InfoFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
@@ -83,13 +86,12 @@ public class InfoFragment extends Fragment implements View.OnClickListener, Adap
     }
     public void setInfo(String type){
         if(type.equals("name") == true){
-            nameInfo = "";
-            nameInfo += "Name: " + name.getText().toString() + "\n";
+            nameInfo = "" + name.getText().toString();
             person.setName(nameInfo);
         }
         else if(type.equals("tel") == true){
             telInfo = "";
-            telInfo += "Emergency contact number: " + tel.getText().toString() + "\n";
+            telInfo = "" + tel.getText().toString();
             person.setTel(telInfo);
         }
         else
@@ -101,8 +103,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener, Adap
             DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                    dateInfo = "";
-                    dateInfo += "Date of Birth: " + (month + 1) + "/" + dayOfMonth + "/" + year + "\n";
+                    dateInfo = "" + (month + 1) + "/" + dayOfMonth + "/" + year;
                     birth.setText((month + 1) + "/" + dayOfMonth + "/" + year);
 
                     person.setBirthOfDate(dateInfo);
@@ -127,7 +128,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener, Adap
             showAlert(spinner);
         }
         else
-            diseaseInfo += "chronic disease: " + disease_list[position].toString() + "\n";
+            diseaseInfo = "" + disease_list[position].toString();
         person.setDiseaseName(diseaseInfo);
     }
     @Override
@@ -148,14 +149,21 @@ public class InfoFragment extends Fragment implements View.OnClickListener, Adap
             });
         }
         else{
-            entireInfo += person.getName() + person.getTel() + person.getBirthOfDate() + person.getDiseaseName();
+            entireInfo = "Name : " + person.getName() +  "\nTel : " + person.getTel() +
+                    "\nBirth : " + person.getBirthOfDate() + "\nDisease : " + person.getDiseaseName();
             alert.setTitle(getString(R.string.submit)).setMessage("\n" + entireInfo);
             alert.setPositiveButton("confirm", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+                    // 데이터 입력 완료된 부분
                     Intent intent = new Intent(getActivity(), TransmitActivity.class);
-                    intent.putExtra("sendMsg",entireInfo);
                     startActivity(intent);
+
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("Person");
+                    myRef.setValue(person);
+
+                    getActivity().finish();
                 }
             });
             alert.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
