@@ -158,8 +158,6 @@ public class InfoFragment extends Fragment implements View.OnClickListener, Adap
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     // 데이터 입력 완료된 부분
-                    Intent intent = new Intent(getActivity(), TransmitActivity.class);
-                    startActivity(intent);
 
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("Person");

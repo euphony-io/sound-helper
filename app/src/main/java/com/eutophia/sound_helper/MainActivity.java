@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     return;
                 mShakeTime = currentTime;
 
+
                 WorkRequest showWorkRequest =
                         new OneTimeWorkRequest.Builder(ShowWorker.class)
                                 .build();

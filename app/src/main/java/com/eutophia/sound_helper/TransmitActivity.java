@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import euphony.lib.transmitter.EuTxManager;
 
-public class TransmitActivity extends AppCompatActivity implements SensorEventListener {
+public class TransmitActivity extends AppCompatActivity {
     private String TAG = "Transmit";
     Person person = new Person();
 
@@ -67,9 +67,6 @@ public class TransmitActivity extends AppCompatActivity implements SensorEventLi
 
         mTxManager = new EuTxManager();
 
-        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
         stopTransmit();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -96,48 +93,11 @@ public class TransmitActivity extends AppCompatActivity implements SensorEventLi
     @Override
     protected void onPause() {
         super.onPause();
-        mSensorManager.unregisterListener(this);
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        if(sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
-            float axX = sensorEvent.values[0];
-            float axY = sensorEvent.values[1];
-            float axZ = sensorEvent.values[2];
-
-            float gravityX = axX / SensorManager.GRAVITY_EARTH;
-            float gravityY = axY / SensorManager.GRAVITY_EARTH;
-            float gravityZ = axZ / SensorManager.GRAVITY_EARTH;
-
-            Float rawForce = gravityX * gravityX + gravityY * gravityY + gravityZ * gravityZ;
-            double squaredForce = Math.sqrt(rawForce.doubleValue());
-            float gForce = (float) squaredForce;
-
-            if(gForce > SHAKE_THRESHOLD_GRAVITY){
-                long currentTime  = System.currentTimeMillis();
-
-                if(mShakeTime + SHAKE_SKIP_TIME > currentTime)
-                    return;
-                mShakeTime = currentTime;
-
-                ////
-                //// 이 부분이 흔들림이 감지되었을 때 호출되는 부분
-                //// 여기서 액티비티 시작
-            }
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {
-
     }
 
     void transmitMsg(String tmp){ // start transmission, stop detection
         mTxManager.euInitTransmit(tmp); // To generate acoustic data
         mTxManager.process(-1); // generate sound infinite.
-
-        mSensorManager.unregisterListener(this);
 
         stopBtn.setVisibility(View.VISIBLE);
         infoTV.setText("Transmitting Data");
@@ -145,9 +105,6 @@ public class TransmitActivity extends AppCompatActivity implements SensorEventLi
 
     void stopTransmit(){ // stop transmission, start detection
         mTxManager.stop();
-
-        mSensorManager.registerListener(this,
-                mAccelerometer,SensorManager.SENSOR_DELAY_NORMAL);
 
         stopBtn.setVisibility(View.GONE);
         infoTV.setText("Waiting for Data from DB");
