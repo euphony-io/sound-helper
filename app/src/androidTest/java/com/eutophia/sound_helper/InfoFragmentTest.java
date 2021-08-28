@@ -28,7 +28,6 @@ import java.util.Date;
 
 @RunWith(AndroidJUnit4.class)
 public class InfoFragmentTest extends TestCase {
-    private String stringToBetyped;
 
     @Rule
     public ActivityTestRule activityRule = new ActivityTestRule<>(
