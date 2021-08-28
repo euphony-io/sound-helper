@@ -2,14 +2,12 @@
 Eutophia sample project
 
 ## Overview
-<!-- Write Overview about this project -->
-**If you use this template, you can use this function**
-- Issue Template
-- Pull Request Template
-- Commit Template
-- Readme Template
-- Contribute Template
-- Pull Request Build Test(With Github Actions)
+**sound-helper is a sample application using the euphony Acoustic Data Telecommunication Library.**</br>
+**This application is designed to verify patient's chronic disease information and identity in urgent situations.**</br>
+**If you use this application, you can use this function**
+- Function to send information when a mobile phone is detected shaking
+- Function to receive information by pressing a button
+- Function to store information in advance
 
 ## Getting Started
 **click `Use this template` and use this template!**
@@ -19,43 +17,16 @@ Eutophia sample project
 -->
 
 ## Contributing
-<!-- Write the way to contribute -->
-I am looking for someone to help with this project. Please advise and point out.  
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
-of conduct, and the process for submitting pull requests to us.
+Changes and improvements are more than welcome! Feel Free to fork and open a pull request. Please make your changes in a specific branch and request to pull into ```master```.
 
 ## Authors
-  - [Always0ne](https://github.com/Always0ne) - **SangIl Hwang** - <si8363@soongsil.ac.kr>
+  - [kuro11pow2](https://github.com/kuro11pow2) - **JunKyu Park** - <kuro11pow2@gmail.com>
+  - [kmsaidev](https://github.com/kmsaidev) - **Miso Kim** - <20191766@dongduk.ac.kr>
+  - [eunzinn](https://github.com/eunzinn) - **EunJin Ok** - <dhr2176@gmail.com>
+  - [judemin](https://github.com/judemin) - **SangYeon Min** - <judemin@konkuk.ac.kr>
 
-See also the list of [contributors](https://github.com/always0ne/readmeTemplate/contributors)
+See also the list of [contributors](https://github.com/euphony-io/sound-helper/graphs/contributors)
 who participated in this project.
-<!--
-## Used or Referenced Projects
- - [referenced Project](project link) - **LICENSE** - little-bit introduce
--->
 
 ## License
-
-```
-MIT License
-
-Copyright (c) 2020 always0ne
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+[Apache 2.0](LICENSE) : sound-helper is licensed under the Apache 2.0 license.
