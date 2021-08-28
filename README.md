@@ -2,14 +2,12 @@
 Eutophia sample project
 
 ## Overview
-<!-- Write Overview about this project -->
-**If you use this template, you can use this function**
-- Issue Template
-- Pull Request Template
-- Commit Template
-- Readme Template
-- Contribute Template
-- Pull Request Build Test(With Github Actions)
+**sound-helper is a sample application using the euphony Acoustic Data Telecommunication Library.**</br>
+**This application is designed to verify patient's chronic disease information and identity in urgent situations.**</br>
+**If you use this application, you can use this function**
+- Function to send information when a mobile phone is detected shaking
+- Function to receive information by pressing a button
+- Function to store information in advance
 
 ## Getting Started
 **click `Use this template` and use this template!**
