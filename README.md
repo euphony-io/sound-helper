@@ -29,4 +29,4 @@ See also the list of [contributors](https://github.com/euphony-io/sound-helper/g
 who participated in this project.
 
 ## License
-[Apache 2.0](LICENSE) : Euphony is licensed under the Apache 2.0 license.
+[Apache 2.0](LICENSE) : sound-helper is licensed under the Apache 2.0 license.
