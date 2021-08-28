@@ -30,6 +30,9 @@ dependencies {
     implementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     implementation 'androidx.security:security-crypto:1.1.0-alpha03'
     def lifecycle_version = "2.2.0"
+    def work_version = "2.5.0"
+
+    implementation "androidx.work:work-runtime:$work_version"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
